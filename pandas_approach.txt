@@ -1,0 +1,14 @@
+
+# way to replace nested dicts with pandas data frames for looking up optimal responses
+# less code but runs slower
+
+def from_csv_to_dataframe(file):
+    frame = pandas.read_csv(file, sep="\t")
+    frame.set_index("hand_value", inplace=True)
+
+    return frame
+
+
+strategy_frame = from_csv_to_dataframe(csv_file)
+
+optimal_choice = strategy_frame.at[player_hand_value, dealer_hand[0]]
